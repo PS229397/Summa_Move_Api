@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Exercise extends Model
 {
-    
+
     protected $perPage = 20;
 
     /**
@@ -38,5 +38,5 @@ class Exercise extends Model
     {
         return $this->hasMany(\App\Models\Performance::class, 'id', 'exercise_id');
     }
-    
+
 }

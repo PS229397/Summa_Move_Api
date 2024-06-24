@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Role extends Model
 {
-    
+
     protected $perPage = 20;
 
     /**
@@ -39,7 +39,7 @@ class Role extends Model
     {
         return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -47,7 +47,7 @@ class Role extends Model
     {
         return $this->hasMany(\App\Models\User::class, 'id', 'role_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -55,5 +55,5 @@ class Role extends Model
     {
         return $this->hasMany(\App\Models\UserRole::class, 'id', 'role_id');
     }
-    
+
 }

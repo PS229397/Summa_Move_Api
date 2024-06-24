@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Performance extends Model
 {
-    
+
     protected $perPage = 20;
 
     /**
@@ -40,7 +40,7 @@ class Performance extends Model
     {
         return $this->belongsTo(\App\Models\Exercise::class, 'exercise_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -48,5 +48,5 @@ class Performance extends Model
     {
         return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
     }
-    
+
 }

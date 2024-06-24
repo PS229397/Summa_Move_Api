@@ -8,48 +8,59 @@ use App\Http\Requests\PerformanceRequest;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PerformanceResource;
+use Illuminate\Support\Facades\Log; // Add this line
 
 class PerformanceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
+        Log::info('Performance index method called', ['request' => $request->all()]);
+
         $performances = Performance::paginate();
+
+        Log::info('Performance index method completed', ['performances' => $performances]);
 
         return PerformanceResource::collection($performances);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(PerformanceRequest $request): Performance
     {
-        return Performance::create($request->validated());
-    }
+        Log::info('Performance store method called', ['request' => $request->all()]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Performance $performance): Performance
-    {
+        $performance = Performance::create($request->validated());
+
+        Log::info('Performance store method completed', ['performance' => $performance]);
+
         return $performance;
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    public function show(Performance $performance): Performance
+    {
+        Log::info('Performance show method called', ['performance' => $performance]);
+
+        Log::info('Performance show method completed');
+
+        return $performance;
+    }
+
     public function update(PerformanceRequest $request, Performance $performance): Performance
     {
+        Log::info('Performance update method called', ['request' => $request->all(), 'performance' => $performance]);
+
         $performance->update($request->validated());
+
+        Log::info('Performance update method completed', ['performance' => $performance]);
 
         return $performance;
     }
 
     public function destroy(Performance $performance): Response
     {
+        Log::info('Performance destroy method called', ['performance' => $performance]);
+
         $performance->delete();
+
+        Log::info('Performance destroy method completed');
 
         return response()->noContent();
     }
