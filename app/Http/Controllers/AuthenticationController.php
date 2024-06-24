@@ -67,7 +67,7 @@ class AuthenticationController extends Controller
 
         $tokenResult = $user->createToken('authToken')->plainTextToken;
 
-        Log::info('Login method completed', ['user' => $user]);
+        Log::info('Login method completed', ['user' => $user, 'access_token' => $tokenResult]);
 
         return response()->json([
             'access_token' => $tokenResult,
